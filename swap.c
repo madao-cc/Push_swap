@@ -1,12 +1,13 @@
 #include "push_swap.h"
 
-static void	swap(t_stack_node **head)
+void	swap(t_stack_node **head)
 {
-	if (!*head || !(*head)->next)
+		if (!*head || !(*head)->next) //Check if the stop node, or second node of a stack exists
 		return ;
 	*head = (*head)->next;
-	*head = (*head)->prev->prev;
-	if ((*head)->next)
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next) 
 		(*head)->next->prev = (*head)->prev;
 	(*head)->next = (*head)->prev;
 	(*head)->prev = NULL;

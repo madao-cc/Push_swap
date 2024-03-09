@@ -7,7 +7,7 @@ void	init_nodes_b(t_stack_node *a, t_stack_node *b)
 	set_target_b(a, b);
 }
 
-static void	set_target_b(t_stack_node *a, t_stack_node *b)
+void	set_target_b(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
 	t_stack_node	*target_node;

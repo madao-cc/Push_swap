@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static void	push(t_stack_node **dst, t_stack_node **src)
+void	push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*push_node;
 
@@ -35,5 +35,5 @@ void	pb(t_stack_node **b, t_stack_node **a, bool print)
 {
 	push(b, a);
 	if (!print)
-		ft_printf("pb\n");
+		printf("pb\n");
 }

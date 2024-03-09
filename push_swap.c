@@ -8,11 +8,14 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 
-	if (argc == 1 || (argc == 2 && !(argv[1][0])))
-		return (1);
+	if (argc <= 1 || (argc == 2 && !(argv[1][0])))
+		return (0);
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	init_stack_a(&a, argv + 1); // argv + 1 pq o 1º comando é o nome do programa
+	if (argc > 2)
+		init_stack_a(&a, argv + 1); // argv + 1 pq o argv[0] é o nome do programa
+	else
+		init_stack_a(&a, argv);
 	if (!stack_sorted(a))
 	{
 		if (stack_len(a) == 2)
@@ -22,6 +25,7 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
-	free_stacks(&a);
+	if (a)
+		free_stack(&a);
 	return (0);
 }

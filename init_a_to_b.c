@@ -18,19 +18,21 @@ void	current_index(t_stack_node *stack)
 	if (!stack)
 		return ;
 	median = stack_len(stack) / 2;
-	while (stack)
+	while (stack->next)
 	{
 		stack->index = i;
 		if (i <= median)
 			stack->above_median = true;
 		else
 			stack->above_median = false;
-		stack->next = stack;
+		if (stack->next == NULL)
+			return ;
+		stack = stack->next;
 		i++;
 	}
 }
 
-static void	set_target_a(t_stack_node *a, t_stack_node *b)
+void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
@@ -57,12 +59,10 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
+void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 {
-	int	len_a;
 	int	len_b;
 
-	len_a = stack_len(a);
 	len_b = stack_len(b);
 	while (a)
 	{

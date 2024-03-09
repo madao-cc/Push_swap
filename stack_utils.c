@@ -67,3 +67,17 @@ t_stack_node	*find_min(t_stack_node *stack)
 	}
 	return (min_node);
 }
+
+t_stack_node	*find_last(t_stack_node *stack)
+{
+	t_stack_node	*last;
+
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		last = stack;
+		stack = stack->next;
+	}
+	return (last);
+}

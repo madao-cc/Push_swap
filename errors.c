@@ -5,13 +5,16 @@ int	error_syntax(char *str)
 	int	i;
 
 	i = 1;
-	if (!(str[0] == '+' || str[0] == '-' || (str[0] >= 9 && *str <= 0)))
-		return (1);
-	if (str[0] == '+' || str[0] == '-' && !(is_digit(str[1])))
+	if (str[0] == '+' || str[0] == '-')
+	{
+		if (!(ft_isdigit(str[1])))
+			return (1);
+	}
+	else if (!(ft_isdigit(str[0])))
 		return (1);
 	while (str[i])
 	{
-		if (!(is_digit(str[i])))
+		if (!(ft_isdigit(str[i])))
 			return (1);
 		i++;
 	}
